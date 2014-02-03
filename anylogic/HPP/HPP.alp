@@ -54,7 +54,7 @@
 					<ZHeightCode><![CDATA[0]]></ZHeightCode>
 					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
 					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
+					<NeigborhoodType>EUCLIDIAN</NeigborhoodType>
 					<LayoutType>ARRANGED</LayoutType>
 					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
 					<NetworkType>USER_DEF</NetworkType>
@@ -225,12 +225,37 @@ neighbors = getNeighbors();]]></StartupCode>
 			<AgentProperties>
 	 			<SpaceType>DISCRETE</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<AfterStepCode><![CDATA[for(Agent a:neighbors) {
-	if( ((Cell)a).alive ) {
-		alive=true;
-		((Cell)a).alive=false;
-	}
-}]]></AfterStepCode>
+				<AfterStepCode><![CDATA[Cell n = ((Cell) getAgentNextToMe(NORTH));
+Cell s = ((Cell) getAgentNextToMe(SOUTH));
+Cell o = ((Cell) getAgentNextToMe(EAST));
+Cell w = ((Cell) getAgentNextToMe(WEST));
+
+if(n != null) {
+	south=n.south;
+} else {
+	south=false;
+}
+
+if(s != null) {
+	north=s.north;
+} else {
+	north=false;
+}
+
+if(w != null) {
+	east=w.east;
+} else {
+	east=false;
+}
+
+if(o != null) {
+	west=o.west;
+	test=10;
+} else {
+	west=false;
+}
+
+alive = north | south | west | east;]]></AfterStepCode>
 			</AgentProperties>
 
 			<DatasetsCreationProperties>
@@ -317,63 +342,6 @@ neighbors = getNeighbors();]]></StartupCode>
 					</Properties>
 				</Variable>
 			</Variables>
-			<Functions>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1391425552918</Id>
-					<Name><![CDATA[changeNorth]]></Name>
-					<X>200</X><Y>60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[north=!north;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1391425668514</Id>
-					<Name><![CDATA[changeEast]]></Name>
-					<X>200</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[east=!east;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1391425681234</Id>
-					<Name><![CDATA[changeSouth]]></Name>
-					<X>200</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[south=!south;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1391425686481</Id>
-					<Name><![CDATA[changeWest]]></Name>
-					<X>200</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[west=!west;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1391430173963</Id>
-					<Name><![CDATA[changeAlive]]></Name>
-					<X>200</X><Y>20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[alive=!alive;]]></Body>
-				</Function>
-			</Functions>
 
 			<Shapes>
 				<Rectangle>
