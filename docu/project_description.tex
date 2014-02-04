@@ -55,9 +55,9 @@
 
 \title{	
 \normalfont \normalsize 
-\textsc{university, school or department name} \\ [25pt] % Your university, school and/or department name(s)
+\textsc{TU Wien, Modelling and Simulation WS2013} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge Assignment Title \\ % The assignment title
+\huge HPP Lattice-Gas Cellular Automata \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -68,6 +68,43 @@
 \begin{document}
 
 \maketitle % Print the title
+
+\section{What are Cellular Automata (CA) in general}
+
+%Quelle: http://mathworld.wolfram.com/CellularAutomaton.html
+A cellular automaton is a collection of "colored" cells on a grid of specified shape that evolves through a number of discrete time steps according to a set of rules based on the states of neighbouring cells. The rules are then applied iteratively for as many time steps as desired.
+
+%Quelle: 2_3_CA.pdf - chapter 2
+CA  can have the following 5 characteristics. Not all of these must be always fulfilled. 
+
+\begin{itemize}
+	\item CA are regular arrangements of single cells of the same kind.
+	\item Each cell holds a finite number of discrete states.
+	\item The states are updated simultaneously (`synchronously') at discrete time levels.
+	\item The update rules are deterministic and uniform in space and time.
+	\item The rules for the evolution of a cell depend only on a local neighbourhood of cells around it. 
+\end{itemize}
+
+%Quelle: http://mathworld.wolfram.com/CellularAutomaton.html
+Cellular automata come in a variety of shapes and varieties. One of the most fundamental properties of a cellular automaton is the type of grid on which it is computed. The simplest such "grid" is a one-dimensional line. In two dimensions, square, triangular, and hexagonal grids may be considered. Cellular automata may also be constructed on Cartesian grids in arbitrary numbers of dimensions. 
+As our problem needs to be handled with a two-dimensional automata, we will only describe this one here more detailed. 
+
+%Quelle: 2_3_CA.pdf - chapter 2
+There is much more freedom for arranging the cells and defining the neighbourhoods for the updating rules in two dimensions.
+
+
+\section{HPP LG CA}
+%Quelle: 2_3_CA.pdf - chapter 3
+HPP is a two-dimensional lattice-gas cellular automata model over a square
+lattice. The vectors ci (i = 1;2;3; 4) connecting nearest neighbors (compare
+Fig. 3.1.1) are called lattice vectors or lattice velocities.
+
+
+\section{implementation rules}
+text
+
+\section{screenshots, results and comments}
+text
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 1
