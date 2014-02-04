@@ -225,19 +225,73 @@ neighbors = getNeighbors();]]></StartupCode>
 			<AgentProperties>
 	 			<SpaceType>DISCRETE</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<AfterStepCode><![CDATA[north = sNorth;
+				<AfterStepCode><![CDATA[//set new values
+north = sNorth;
 south = nSouth;
 west = eWest;
 east = wEast;
 
-alive = north | south | west | east;]]></AfterStepCode>
-				<BeforeStepCode><![CDATA[Cell n = ((Cell) getAgentNextToMe(NORTH));
+//calculate value of colour
+if(north && south && west && east) {
+	colour = 4;
+} else if(north && south && west && !east) {
+	colour = 3;
+} else if(north && south && !west && east) {
+	colour = 3;
+} else if(north && !south && west && east) {
+	colour = 3;
+} else if(!north && south && west && east) {
+	colour = 3;
+} else if(!north && !south && west && east) {
+	colour = 2;
+} else if(!north && south && !west && east) {
+	colour = 2;
+} else if(!north && south && west && !east) {
+	colour = 2;
+} else if(north && !south && !west && east) {
+	colour = 2;
+} else if(north && !south && west && !east) {
+	colour = 2;
+} else if(north && south && !west && !east) {
+	colour = 2;
+} else if(north && !south && !west && !east) {
+	colour = 1;
+} else if(!north && south && !west && !east) {
+	colour = 1;
+} else if(!north && !south && west && !east) {
+	colour = 1;
+} else if(!north && !south && !west && east) {
+	colour = 1;
+} else {
+	colour = 0;
+}
+]]></AfterStepCode>
+				<BeforeStepCode><![CDATA[//collisions
+//if n and s or e and w than particles rotate 90°
+if(north && south && !east && !west) {
+	east = true;
+	west = true;
+	north = false;
+	south = false;
+}
+if(!north && !south && east && !west) {
+	north = true;
+	south = true;
+	east = false;
+	west = false;
+}
+
+//get neighbors of current cell
+Cell n = ((Cell) getAgentNextToMe(NORTH));
 Cell s = ((Cell) getAgentNextToMe(SOUTH));
 Cell o = ((Cell) getAgentNextToMe(EAST));
 Cell w = ((Cell) getAgentNextToMe(WEST));
 
+//calculate new value for cell
+//if north-neighbour not null nSouth = north-neighbout.south -> south bits travel from north to south
 if(n != null) {
 	nSouth=n.south;
+//if no north neighbour and north bit is true change bit to south -> reflection
 } else if(n==null && north) {
 	nSouth=true;
 } else {
@@ -266,8 +320,7 @@ if(w != null) {
 	wEast=true;
 } else {
 	wEast=false;
-}
-]]></BeforeStepCode>
+}]]></BeforeStepCode>
 			</AgentProperties>
 
 			<DatasetsCreationProperties>
@@ -292,6 +345,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391425477520</Id>
 					<Name><![CDATA[east]]></Name>
+					<Description><![CDATA[current east value]]></Description> 
 					<X>120</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -305,6 +359,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391425488179</Id>
 					<Name><![CDATA[south]]></Name>
+					<Description><![CDATA[current south value]]></Description> 
 					<X>120</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -318,6 +373,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391425493130</Id>
 					<Name><![CDATA[west]]></Name>
+					<Description><![CDATA[current west value]]></Description> 
 					<X>120</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -329,21 +385,9 @@ if(w != null) {
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1391430163470</Id>
-					<Name><![CDATA[alive]]></Name>
-					<X>120</X><Y>20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[boolean]]></Type>        
-						<InitialValue><![CDATA[north | south | east | west]]></InitialValue>                 	
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1391430475634</Id>
 					<Name><![CDATA[neighbors]]></Name>
+					<Description><![CDATA[array of neighbours]]></Description> 
 					<X>120</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -356,6 +400,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391514211877</Id>
 					<Name><![CDATA[nSouth]]></Name>
+					<Description><![CDATA[current value of north-neighbor.south]]></Description> 
 					<X>210</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -369,6 +414,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391514224703</Id>
 					<Name><![CDATA[wEast]]></Name>
+					<Description><![CDATA[current value of west-neighbor.east]]></Description> 
 					<X>210</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -382,6 +428,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391514231340</Id>
 					<Name><![CDATA[sNorth]]></Name>
+					<Description><![CDATA[current value of south-neighbor.north]]></Description> 
 					<X>210</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -395,6 +442,7 @@ if(w != null) {
 				<Variable Class="PlainVariable">
 					<Id>1391514241669</Id>
 					<Name><![CDATA[eWest]]></Name>
+					<Description><![CDATA[current value of east-neighbor.west]]></Description> 
 					<X>210</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -403,6 +451,25 @@ if(w != null) {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1391515297475</Id>
+					<Name><![CDATA[colour]]></Name>
+					<Description><![CDATA[int value to set the correct colour of the cell according to the number of particles at the cell.
+0=white
+1=lightGray
+2=gray
+3=darkGray
+4=black]]></Description> 
+					<X>210</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 			</Variables>
@@ -430,7 +497,7 @@ if(w != null) {
 					<Height>4</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-16711936</FillColor>
-					<FillColorCode><![CDATA[alive ? red : lemonChiffon]]></FillColorCode>
+					<FillColorCode><![CDATA[colour==4 ? black : colour==3 ? darkGray : colour==2 ? gray : colour==1 ? lightGrey : white]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 			</Shapes>
