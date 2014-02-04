@@ -225,37 +225,49 @@ neighbors = getNeighbors();]]></StartupCode>
 			<AgentProperties>
 	 			<SpaceType>DISCRETE</SpaceType>			
 				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<AfterStepCode><![CDATA[Cell n = ((Cell) getAgentNextToMe(NORTH));
+				<AfterStepCode><![CDATA[north = sNorth;
+south = nSouth;
+west = eWest;
+east = wEast;
+
+alive = north | south | west | east;]]></AfterStepCode>
+				<BeforeStepCode><![CDATA[Cell n = ((Cell) getAgentNextToMe(NORTH));
 Cell s = ((Cell) getAgentNextToMe(SOUTH));
 Cell o = ((Cell) getAgentNextToMe(EAST));
 Cell w = ((Cell) getAgentNextToMe(WEST));
 
 if(n != null) {
-	south=n.south;
+	nSouth=n.south;
+} else if(n==null && north) {
+	nSouth=true;
 } else {
-	south=false;
+	nSouth=false;
 }
 
 if(s != null) {
-	north=s.north;
+	sNorth=s.north;
+} else if(s==null && south) {
+	sNorth=true;
 } else {
-	north=false;
-}
-
-if(w != null) {
-	east=w.east;
-} else {
-	east=false;
+	sNorth=false;
 }
 
 if(o != null) {
-	west=o.west;
-	test=10;
+	eWest=o.west;
+} else if (o==null && east) {
+	eWest=true;
 } else {
-	west=false;
+	eWest=false;
 }
 
-alive = north | south | west | east;]]></AfterStepCode>
+if(w != null) {
+	wEast=w.east;
+} else if(w==null && west) {
+	wEast=true;
+} else {
+	wEast=false;
+}
+]]></BeforeStepCode>
 			</AgentProperties>
 
 			<DatasetsCreationProperties>
@@ -326,7 +338,7 @@ alive = north | south | west | east;]]></AfterStepCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
-						<InitialValue><![CDATA[randomTrue( 0.1 )]]></InitialValue>                 	
+						<InitialValue><![CDATA[north | south | east | west]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -339,6 +351,58 @@ alive = north | south | west | east;]]></AfterStepCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Agent[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1391514211877</Id>
+					<Name><![CDATA[nSouth]]></Name>
+					<X>210</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1391514224703</Id>
+					<Name><![CDATA[wEast]]></Name>
+					<X>210</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1391514231340</Id>
+					<Name><![CDATA[sNorth]]></Name>
+					<X>210</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1391514241669</Id>
+					<Name><![CDATA[eWest]]></Name>
+					<X>210</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 			</Variables>
