@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201310021228" AlpVersion="6.6.0">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201310021509" AlpVersion="6.6.0">
 <Model>
 	<Id>1391425370062</Id>
 	<Name><![CDATA[HPP]]></Name>
@@ -274,7 +274,7 @@ if(north && south && !east && !west) {
 	north = false;
 	south = false;
 }
-if(!north && !south && east && !west) {
+if(!north && !south && east && west) {
 	north = true;
 	south = true;
 	east = false;
