@@ -69,10 +69,14 @@
 
 \maketitle % Print the title
 
+\section{Abstract}
+
+The goal of this assignment is to program the HPP LG CA in MatLab and Anylogic. For this purpose we will first describe general information about Cellular Automata and the HPP model of Lattice-Gas Cellular Automata. After the implementation of the model in the two systems we are providing screenshots with our results and comments about the code and implementation method in MatLab and Anylogic.
+
 \section{What are Cellular Automata (CA) in general}
 
 %Quelle: http://mathworld.wolfram.com/CellularAutomaton.html
-A cellular automaton is a collection of "colored" cells on a grid of specified shape that evolves through a number of discrete time steps according to a set of rules based on the states of neighbouring cells. The rules are then applied iteratively for as many time steps as desired.
+A cellular automaton is a collection of "coloured" cells on a grid of specified shape that evolves through a number of discrete time steps according to a set of rules based on the states of neighbouring cells. The rules are then applied iteratively for as many time steps as desired.
 
 %Quelle: 2_3_CA.pdf - chapter 2
 CA  can have the following 5 characteristics. Not all of these must be always fulfilled. 
@@ -90,19 +94,29 @@ Cellular automata come in a variety of shapes and varieties. One of the most fun
 As our problem needs to be handled with a two-dimensional automata, we will only describe this one here more detailed. 
 
 %Quelle: 2_3_CA.pdf - chapter 2
-There is much more freedom for arranging the cells and defining the neighbourhoods for the updating rules in two dimensions.
+There is much more freedom for arranging the cells and defining the neighbourhoods for the updating rules in two dimensions. There are two types of neighbourhoods in two dimensions. There is the von Neumann neighbourhood and the Moore neighbourhood.
+
+%Quelle: 2_3_CA.pdf - chapter 2.4.5
+Despite of their simple update rules cellular automata can display complex
+behaviour which is a prerequisite to use them as a simulation tool for physical
+(biological, chemical, ...) phenomena like, for example, fluid flow. CA are
+very easy to implement and are especially well suited for massively parallel
+computers because of the local character of the update rules. By construction
+they are unconditionally numerically stable. 
 
 
 \section{HPP LG CA}
 %Quelle: http://en.wikipedia.org/wiki/Lattice_gas_automaton
-lattice gas cellular automata are a type of cellular automaton used to simulate fluid flows.
+Lattice gas cellular automata are a type of cellular automaton used to simulate fluid flows.
 
-As a cellular automaton, these models comprise a lattice, where the sites on the lattice can take a certain number of different states. In lattice gas, the various states are particles with certain velocities. Evolution of the simulation is done in discrete time steps. After each time step, the state at a given site can be determined by the state of the site itself and neighboring sites, before the time step.
+As a cellular automaton, these models comprise a lattice, where the sites on the lattice can take a certain number of different states. In lattice gas, the various states are particles with certain velocities. Evolution of the simulation is done in discrete time steps. After each time step, the state at a given site can be determined by the state of the site itself and neighbouring sites, before the time step.
 The state at each site is purely boolean. At a given site, there either is or is not a particle moving in each direction.
 
-In papers published in 1973 and 1976, Hardy, Pomeau and de Pazzis introduced the first Lattice Boltzmann model, which is called the HPP model after the authors. HPP model is a two-dimensional model of fluid particle interactions. In this model, the lattice is square, and the particles travel independently at a unit speed to the discrete time.The particles can move to any of the four sites whose cells share a common edge. Particles cannot move diagonally.
+In papers published in 1973 and 1976, Hardy, Pomeau and de Pazzis introduced the first Lattice Boltzmann model, which is called the HPP model after the authors. HPP model is a two-dimensional model of fluid particle interactions. In this model, the lattice is square, and the particles travel independently at a unit speed to the discrete time. The particles can move to any of the four sites whose cells share a common edge. Particles cannot move diagonally.
 If two particles collide head-on, for example a particle moving to the left meets a particle moving to the right, the outcome will be two particles leaving the site at right angles to the direction they came in.
 
+
+\section{implementation rules}
 %Quelle: http://en.wikipedia.org/wiki/HPP_model
 In this model the lattice takes the form of a two-dimensional square grid, with particles capable of moving to any of the four adjacent grid points which share a common edge, and particles cannot move diagonally. This means each grid point can only have one of sixteen possible interactions.
 \begin{itemize}
@@ -119,21 +133,11 @@ The following rules also govern the model:
 \end{enumerate}
 The HPP models follows a two stage update process.
 
-Collision Step
+\subsection{Collision Step}
 In this step the above rules, 2., 3. and 4. are checked and applied if any collisions have occurred. This results in head-on collision particles changing direction, pass-through collisions continuing unchanged, or non-colliding particles simple remaining the same.
 
-Transport Step
+\subsection{Transport Step}
 The second step consists of each particle moving one lattice step in the direction they are currently travelling, which could have been changed by the above Collision Step.
-
-%Quelle: 2_3_CA.pdf - chapter 3
-HPP is a two-dimensional lattice-gas cellular automata model over a square
-lattice. The vectors ci (i = 1;2;3; 4) connecting nearest neighbours (compare
-Fig. 3.1.1) are called lattice vectors or lattice velocities.
-
-
-
-\section{implementation rules}
-text
 
 \section{screenshots, results and comments}
 text
