@@ -1,0 +1,20 @@
+HPP Lattice-Gas Cellular Automata
+
+Lattice gas cellular automata are a type of cellular automaton used to simulate fluid flows.
+
+As a cellular automaton, these models comprise a lattice, where the sites on the lattice can take a 
+certain number of different states. In lattice gas, the various states are particles with certain 
+velocities. Evolution of the simulation is done in discrete time steps. After each time step, the state 
+at a given site can be determined by the state of the site itself and neighbouring sites, before the 
+time step.
+The state at each site is purely boolean. At a given site, there either is or is not a particle moving 
+in each direction.
+
+HPP model is a two-dimensional model of fluid particle interactions. In this model, the lattice is 
+square, and the particles travel independently at a unit speed to the discrete time. The particles can 
+move to any of the four sites whose cells share a common edge. Particles cannot move diagonally.
+If two particles collide head-on, for example a particle moving to the left meets a particle moving to 
+the right, the outcome will be two particles leaving the site at right angles to the direction they came 
+in.
+
+parameters and variables
