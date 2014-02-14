@@ -27,7 +27,7 @@
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-
+\usepackage{graphicx} 
 \usepackage{sectsty} % Allows customizing section commands
 \allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
 
@@ -139,8 +139,32 @@ In this step the above rules, 2., 3. and 4. are checked and applied if any colli
 \subsection{Transport Step}
 The second step consists of each particle moving one lattice step in the direction they are currently travelling, which could have been changed by the above Collision Step.
 
+\pagebreak
+\subsection{collision and propagation}
+
+\begin{figure}[!htp]
+	\centering
+		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-1.PNG}
+	\caption{HPP: collision and propagation. Filled circles denote occupied cells and
+open circles empty cells. 
+a) Part of the lattice before collision (e.g. after propagation);
+there is only one collision configuration (two particles in opposite cells at the same node; on the left). 
+b) After collision (e.g. before propagation): the configuration of the cells at node on the left side has changed. 
+c) After propagation: all particles have moved along the links to their nearest neighbours (the lattice outside the part shown was assumed to be empty, e.g. no propagation of particles from `outside').}
+	\label{fig:collision_propagation}
+\end{figure}
+
+\begin{figure}[!htp]
+	\centering
+		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-2.PNG}
+	\caption{HPP: collisions. 
+a) There is only one collision configuration (head-on collision) for HPP: two cell on opposite links are occupied and the two other cells are empty. After collision the formerly empty cells are occupied and vice versa. 
+b)Same as a) but showing the associated momentum vectors. Both momentum vectors are rotated by 90°. Mass and momentum are conserved.}
+	\label{fig:collisions}
+\end{figure}
+
 \section{screenshots, results and comments}
-text
+\lipsum[1] % Dummy text
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 1
