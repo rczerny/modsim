@@ -19,7 +19,12 @@
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[createAgents();]]></StartupCode>
+			<StartupCode><![CDATA[if(initial==2) {
+	var1();
+}
+if(initial==3) {
+	var2();
+}]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -121,17 +126,15 @@
 			</Environments>
 			<Functions>
 				<Function AccessType="public" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
+					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1392558068054</Id>
-					<Name><![CDATA[createAgents]]></Name>
+					<Name><![CDATA[getAmount]]></Name>
 					<X>-130</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for(int i=0;i<amount;i++) {
-	add_cells();
-}]]></Body>
+					<Body><![CDATA[return this.amount;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[int]]></ReturnType>
@@ -149,6 +152,58 @@ if(amount==10000)
 	return 100;
 	
 return 10;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1392582568937</Id>
+					<Name><![CDATA[var1]]></Name>
+					<X>-130</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[int a = getGrid()/2;
+
+for(int i=0;i<a;i++) {
+	for(int j=0;j<a;j++) {
+		int index = (j*getGrid())+i;
+		cells.get(index).east=1;
+		cells.get(index).west=1;
+		cells.get(index).north=1;
+		cells.get(index).south=1;
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1392583129606</Id>
+					<Name><![CDATA[var2]]></Name>
+					<X>-130</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[int a = getGrid()/2;
+
+for(int i=0;i<a;i++) {
+	for(int j=0;j<a;j++) {
+		int index = (j*getGrid())+i;
+		cells.get(index).east=1;
+		cells.get(index).west=1;
+		cells.get(index).north=1;
+		cells.get(index).south=1;
+	}
+}
+
+for(int b = getGrid()/2;b<getGrid();b++) {
+	for(int c = getGrid()/2;c<getGrid();c++) {
+		int index = (c*getGrid())+b;
+		cells.get(index).east=1;
+		cells.get(index).west=1;
+		cells.get(index).north=1;
+		cells.get(index).south=1;
+	}
+}]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -168,7 +223,7 @@ return 10;]]></Body>
 					<GenericParametersSubstitute><![CDATA[]]></GenericParametersSubstitute>
 					<Parameters>
 					</Parameters>
-					<Replication><![CDATA[0]]></Replication>	
+					<Replication><![CDATA[getAmount();]]></Replication>	
 					<EnvironmentCode><![CDATA[environment]]></EnvironmentCode>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 				</EmbeddedObject>
@@ -566,10 +621,7 @@ try{
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[
-neighbors = getNeighbors();
-
-int a = get_Main().amount;
+			<StartupCode><![CDATA[int a = get_Main().amount;
 if(a == 100) {
 	setSize(40);
 } else {
@@ -718,19 +770,6 @@ if(w != null) {
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1391430475634</Id>
-					<Name><![CDATA[neighbors]]></Name>
-					<Description><![CDATA[array of neighbours]]></Description> 
-					<X>120</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[Agent[]]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1391514211877</Id>
 					<Name><![CDATA[nSouth]]></Name>
 					<Description><![CDATA[current value of north-neighbor.south]]></Description> 
@@ -853,7 +892,7 @@ if(initial==0) {
 	return a;
 }
 
-if(initial==1) {
+if(initial==1 || initial==2 || initial==3) {
 	return 0;
 }
 
@@ -1002,7 +1041,7 @@ root.initial = setup;]]></BeforeSimulationRunCode>
 				<Text>
 					<Id>1392293635425</Id>
 					<Name><![CDATA[label_setup]]></Name>
-					<X>60</X><Y>90</Y>
+					<X>40</X><Y>140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1025,7 +1064,7 @@ root.initial = setup;]]></BeforeSimulationRunCode>
 				<Text>
 					<Id>1392293709324</Id>
 					<Name><![CDATA[label_amount]]></Name>
-					<X>240</X><Y>90</Y>
+					<X>40</X><Y>90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1051,7 +1090,7 @@ root.initial = setup;]]></BeforeSimulationRunCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1391425370085</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>40</X><Y>180</Y>
+					<X>45</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1079,12 +1118,12 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1392293555193</Id>
 					<Name><![CDATA[initial]]></Name>
-					<X>60</X><Y>120</Y>
+					<X>40</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="50" 
+					<BasicProperties Width="260" Height="40" 
 				AsObject="true">
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
@@ -1093,13 +1132,19 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 	setup = 0;
 } else if(value==1) {
 	setup = 1;
+} else if(value==2) {
+	setup = 2;
+} else if(value==3) {
+	setup = 3;
 }]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
-						<Orientation>VERTICAL</Orientation>
+						<Orientation>HORIZONTAL</Orientation>
 						<Button><![CDATA[random]]></Button>
 						<Button><![CDATA[empty]]></Button>
+						<Button><![CDATA[var1]]></Button>
+						<Button><![CDATA[var2]]></Button>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
@@ -1107,12 +1152,12 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1392293587849</Id>
 					<Name><![CDATA[amount]]></Name>
-					<X>240</X><Y>120</Y>
+					<X>40</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="120" Height="50" 
+					<BasicProperties Width="120" Height="30" 
 				AsObject="true">
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
@@ -1125,7 +1170,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
-						<Orientation>VERTICAL</Orientation>
+						<Orientation>HORIZONTAL</Orientation>
 						<Button><![CDATA[100]]></Button>
 						<Button><![CDATA[10000]]></Button>
 						<LinkTo>false</LinkTo>
