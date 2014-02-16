@@ -19,6 +19,7 @@
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
+			<StartupCode><![CDATA[createAgents();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -65,6 +66,30 @@
 						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1392559522921</Id>
+					<Name><![CDATA[amount]]></Name>
+					<X>-130</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1392564758160</Id>
+					<Name><![CDATA[initial]]></Name>
+					<X>-130</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 			</Variables>
 			<Environments>
 				<Environment>
@@ -80,8 +105,8 @@
 					<WidthCode><![CDATA[400]]></WidthCode>
 					<HeightCode><![CDATA[400]]></HeightCode>
 					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[10]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[10]]></RowsCountCode>
+					<ColumnsCountCode><![CDATA[getGrid()]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[getGrid()]]></RowsCountCode>
 					<NeigborhoodType>EUCLIDIAN</NeigborhoodType>
 					<LayoutType>ARRANGED</LayoutType>
 					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
@@ -94,6 +119,38 @@
 
 				</Environment>
 			</Environments>
+			<Functions>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1392558068054</Id>
+					<Name><![CDATA[createAgents]]></Name>
+					<X>-130</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for(int i=0;i<amount;i++) {
+	add_cells();
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1392563278637</Id>
+					<Name><![CDATA[getGrid]]></Name>
+					<X>-130</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if(amount==100)
+	return 10;
+	
+if(amount==10000)
+	return 100;
+	
+return 10;]]></Body>
+				</Function>
+			</Functions>
 			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>0</Id>
@@ -111,7 +168,7 @@
 					<GenericParametersSubstitute><![CDATA[]]></GenericParametersSubstitute>
 					<Parameters>
 					</Parameters>
-					<Replication><![CDATA[100]]></Replication>	
+					<Replication><![CDATA[0]]></Replication>	
 					<EnvironmentCode><![CDATA[environment]]></EnvironmentCode>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 				</EmbeddedObject>
@@ -509,8 +566,17 @@ try{
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[//initialize the array of neighbors - it won't change over time
-neighbors = getNeighbors();]]></StartupCode>
+			<StartupCode><![CDATA[
+neighbors = getNeighbors();
+
+int a = get_Main().amount;
+if(a == 100) {
+	setSize(40);
+} else {
+	setSize(4);
+}
+
+]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -606,7 +672,7 @@ if(w != null) {
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-						<InitialValue><![CDATA[new Random().nextInt(1);]]></InitialValue>                 	
+						<InitialValue><![CDATA[getValue();]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -620,7 +686,7 @@ if(w != null) {
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-						<InitialValue><![CDATA[new Random().nextInt(1);]]></InitialValue>                 	
+						<InitialValue><![CDATA[getValue();]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -634,7 +700,7 @@ if(w != null) {
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-						<InitialValue><![CDATA[new Random().nextInt(1);]]></InitialValue>                 	
+						<InitialValue><![CDATA[getValue();]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -648,7 +714,7 @@ if(w != null) {
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-						<InitialValue><![CDATA[new Random().nextInt(1);]]></InitialValue>                 	
+						<InitialValue><![CDATA[getValue();]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -739,7 +805,61 @@ if(w != null) {
 						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1392562017664</Id>
+					<Name><![CDATA[size]]></Name>
+					<X>-120</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1392557867506</Id>
+					<Name><![CDATA[setSize]]></Name>
+					<X>-120</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[size]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[
+rectangle.setHeight(size);
+rectangle.setWidth(size);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1392564029521</Id>
+					<Name><![CDATA[getValue]]></Name>
+					<X>-120</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[int initial = get_Main().initial;
+
+if(initial==0) {
+	Random randomGenerator = new Random();
+	int a = randomGenerator.nextInt(2);
+	return a;
+}
+
+if(initial==1) {
+	return 0;
+}
+
+return 0;]]></Body>
+				</Function>
+			</Functions>
 
 			<Shapes>
 				<Rectangle>
@@ -790,6 +910,8 @@ if(w != null) {
 			<MaximumMemory>64</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<BeforeSimulationRunCode><![CDATA[root.amount = size;
+root.initial = setup;]]></BeforeSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<RandomSelectionModeForSimultaneousEvents>false</RandomSelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
@@ -802,6 +924,33 @@ if(w != null) {
 			<DiffEquationsNumericalMethod>EULER</DiffEquationsNumericalMethod>
 			<MixedEquationsNumericalMethod>RK45_NEWTON</MixedEquationsNumericalMethod>
 			<AlgebraicEquationsNumericalMethod>MODIFIED_NEWTON</AlgebraicEquationsNumericalMethod>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1392557131974</Id>
+					<Name><![CDATA[size]]></Name>
+					<X>-50</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[100]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1392564554107</Id>
+					<Name><![CDATA[setup]]></Name>
+					<X>-50</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+			</Variables>
 
 			<Shapes>
 				<Text>
@@ -912,8 +1061,10 @@ if(w != null) {
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
 						<TextColor/>
-						<ActionCode><![CDATA[if ( getState() == IDLE )
+						<ActionCode><![CDATA[if ( getState() == IDLE ) {
 	run();
+}	
+
 getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
@@ -938,6 +1089,11 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
 						<TextColor/>
+						<ActionCode><![CDATA[if(value==0) {
+	setup = 0;
+} else if(value==1) {
+	setup = 1;
+}]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -961,6 +1117,11 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
 						<TextColor/>
+						<ActionCode><![CDATA[if(value==0) {
+	size=100;
+} else {
+	size=10000;
+}]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
