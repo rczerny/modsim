@@ -145,13 +145,7 @@ if(initial==3) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(amount==100)
-	return 10;
-	
-if(amount==10000)
-	return 100;
-	
-return 10;]]></Body>
+					<Body><![CDATA[return (int) Math.sqrt(amount);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -265,11 +259,12 @@ for(int b = getGrid()/2;b<getGrid();b++) {
 					<OnClickCode><![CDATA[status.setText("");
 x=(int)clickx;
 y=(int)clicky;
+int cellSize = (int) cells.get(0).rectangle.getWidth();
 
-edit_north.setText(""+(cells.get( (int)clicky / 40 * 10 + (int)clickx / 40 ).north));
-edit_south.setText(""+(cells.get( (int)clicky / 40 * 10 + (int)clickx / 40 ).south));
-edit_east.setText(""+(cells.get( (int)clicky / 40 * 10 + (int)clickx / 40 ).east));
-edit_west.setText(""+(cells.get( (int)clicky / 40 * 10 + (int)clickx / 40 ).west));
+edit_north.setText(""+(cells.get( (int)clicky / cellSize * getGrid() + (int)clickx / cellSize ).north));
+edit_south.setText(""+(cells.get( (int)clicky / cellSize * getGrid() + (int)clickx / cellSize ).south));
+edit_east.setText(""+(cells.get( (int)clicky / cellSize * getGrid() + (int)clickx / cellSize ).east));
+edit_west.setText(""+(cells.get( (int)clicky / cellSize * getGrid() + (int)clickx / cellSize ).west));
 ]]></OnClickCode>
 					<AsObject>true</AsObject>
 					<EmbeddedIcon>false</EmbeddedIcon>
@@ -624,7 +619,11 @@ try{
 			<StartupCode><![CDATA[int a = get_Main().amount;
 if(a == 100) {
 	setSize(40);
-} else {
+} else if(a == 400) {
+	setSize(20);
+} else if(a == 1600) {
+	setSize(10);
+} else if(a == 10000) {
 	setSize(4);
 }
 
@@ -1090,7 +1089,7 @@ root.initial = setup;]]></BeforeSimulationRunCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1391425370085</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>45</X><Y>200</Y>
+					<X>40</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1157,14 +1156,18 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="120" Height="30" 
+					<BasicProperties Width="210" Height="30" 
 				AsObject="true">
                         <EmbeddedIcon>false</EmbeddedIcon>				
 						<FillColor/>
 						<TextColor/>
 						<ActionCode><![CDATA[if(value==0) {
 	size=100;
-} else {
+} else if(value==1) {
+	size=400;
+} else if(value==2) {
+	size=1600;
+} else if(value==3) {
 	size=10000;
 }]]></ActionCode>
 					</BasicProperties>
@@ -1172,6 +1175,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<Orientation>HORIZONTAL</Orientation>
 						<Button><![CDATA[100]]></Button>
+						<Button><![CDATA[400]]></Button>
+						<Button><![CDATA[1600]]></Button>
 						<Button><![CDATA[10000]]></Button>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
