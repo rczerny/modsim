@@ -1,13 +1,15 @@
 % width and height of the field
 WIDTH = 100;
 HEIGHT = 100;
-FILLRATIO = 0.5;
+%FILLRATIO = 0.5;
 % initial random filling
 fields = randi(16,HEIGHT,WIDTH)-1;
 kernel1 = [ones(HEIGHT, WIDTH/2), zeros(HEIGHT, WIDTH/2)];
 kernel2 = [ones(HEIGHT/2, WIDTH); zeros(HEIGHT/2, WIDTH)];
-kernel3 = [ones(HEIGHT/2, WIDTH/2), zeros(HEIGHT/2, WIDTH/2); zeros(HEIGHT/2, WIDTH/2),ones(HEIGHT/2, WIDTH/2)];
-fields = fields .* kernel3;
+kernel3 = [ones(HEIGHT/2, WIDTH/2), zeros(HEIGHT/2, WIDTH/2); 
+    zeros(HEIGHT/2, WIDTH/2),ones(HEIGHT/2, WIDTH/2)];
+%kernel4 = 
+fields = fields .* kernel2;
 % create color map, so we don't have to recalculate the grey values over
 % and over again
 cmRow = [1;0.75;0.75;0.5;0.75;0.5;0.5;0.25;0.75;0.5;0.5;0.25;0.5;0.25;0.25;0];
@@ -22,7 +24,7 @@ Nbounce = 0;
 Ebounce = 0;
 Sbounce = 0;
 Wbounce = 0;
-while (i < 100)
+while (i < 200)
     i = i+1;
     % collision
     for row = 1:HEIGHT

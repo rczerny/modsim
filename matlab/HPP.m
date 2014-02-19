@@ -1,15 +1,22 @@
+% duration in ticks
+DURATION = 200;
 % width and height of the field
-WIDTH = 100;
-HEIGHT = 100;
-
+WIDTH = 99;
+HEIGHT = 99;
+%FILLRATIO = 0.5;
 % initial random filling
 fields = randi(16,HEIGHT,WIDTH)-1;
+kernel1 = [ones(HEIGHT, floor(WIDTH/2)), zeros(HEIGHT, ceil(WIDTH/2))];
+kernel2 = [ones(floor(HEIGHT/2), WIDTH); zeros(ceil(HEIGHT/2), WIDTH)];
+kernel3 = [ones(floor(HEIGHT/2), ceil(WIDTH/2)), zeros(floor(HEIGHT/2), ceil(WIDTH/2)); 
+    zeros(floor(HEIGHT/2), ceil(WIDTH/2)),ones(floor(HEIGHT/2), ceil(WIDTH/2))];
+fields = fields .* kernel2;
 % create color map, so we don't have to recalculate the grey values over
 % and over again
 cmRow = [1;0.75;0.75;0.5;0.75;0.5;0.5;0.25;0.75;0.5;0.5;0.25;0.5;0.25;0.25;0];
 specialGray = [cmRow, cmRow, cmRow];
 colormap(specialGray);
-image(fields)
+image(fields+1)
 i = 0;
 EWcollisions = 0;
 NScollisions = 0;
@@ -17,7 +24,9 @@ Nbounce = 0;
 Ebounce = 0;
 Sbounce = 0;
 Wbounce = 0;
-while (i < 100)
+% pre-allocation of memory for efficient use
+animation = cell(HEIGHT, WIDTH, DURATION);
+while (i < DURATION)
     i = i+1;
     % collision
     for row = 1:HEIGHT
@@ -76,8 +85,13 @@ while (i < 100)
         end
     end
     fields = fieldsNew;
-    image(fields);
-    drawnow
+    %image(fields+1);
+    %drawnow
+    animation{i} = fields;
+end
+for i = 1:length(animation)
+   image(animation{i}+1);
+   drawnow
 end
 disp(['NScollisions: ', int2str(NScollisions)])
 disp(['EWcollisions: ', int2str(EWcollisions)])
