@@ -17,4 +17,6 @@ If two particles collide head-on, for example a particle moving to the left meet
 the right, the outcome will be two particles leaving the site at right angles to the direction they came 
 in.</p>
 
-<h2>parameters and variables</h2>
+<p>See the following illustrations for further understanding of collision and propagation:</p>
+<img src=“ImplementationRules-1.PNG” alt=“Propagation Rules” />
+<img src=“ImplementationRules-2.PNG” alt=“Collision Rules” />

@@ -5,7 +5,7 @@ clear;
 tic;
 % duration in ticks
 if ~exist('DURATION', 'var')
-    DURATION = 200;
+    DURATION = 2;
 end
 % height and width of the field
 if ~exist('HEIGHT', 'var')
@@ -15,7 +15,7 @@ if ~exist('WIDTH', 'var')
     WIDTH = 50;
 end
 if ~exist('SCENARIO', 'var')
-    SCENARIO = 2;
+    SCENARIO = 3;
 end
 %FILLRATIO = 0.5;
 % initial random filling
