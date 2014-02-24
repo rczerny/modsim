@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.4)  24 FEB 2014 10:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.4)  24 FEB 2014 10:22
 entering extended mode
 **project_description.tex
 (C:\Users\Mike\git\ModSimProject-WS13\docu\project_description.tex
@@ -920,30 +920,46 @@ File: Screenshots/MatLab-300-100-100-3-End.PNG Graphic file (type png)
 Package pdftex.def Info: Screenshots/MatLab-300-100-100-3-End.PNG used on input
  line 205.
 (pdftex.def)             Requested size: 250.95587pt x 223.94446pt.
+ [5 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/ImplementationRules-
+2.PNG>] [6 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-Star
+t.PNG> <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-var1-100
+00.PNG>] [7 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-var
+1-10000-2.PNG> <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/MatLab-30
+0-100-100-3-Start.PNG>]
+(C:\Users\Mike\git\ModSimProject-WS13\docu\project_description.lof
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 2.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 2.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 2.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 2.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 2.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 2.
+)
+\tf@lof=\write3
 
-Overfull \hbox (48.6735pt too wide) in paragraph at lines 215--216
+Overfull \hbox (48.6735pt too wide) in paragraph at lines 217--218
 []\T1/futs/m/n/10.95 "'Mathworld"', http://mathworld.wolfram.com/CellularAutoma
 ton.html,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 []\T1/futs/m/n/10.95 "'Wikipedia"', http://en.wikipedia.org/wiki/HPP_model,
  []
 
 
-Overfull \hbox (24.98857pt too wide) in paragraph at lines 217--218
+Overfull \hbox (24.98857pt too wide) in paragraph at lines 219--220
 []\T1/futs/m/n/10.95 "'Wikipedia"', http://en.wikipedia.org/wiki/Lattice_gas_au
 tomaton,
  []
 
-[5 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/ImplementationRules-2
-.PNG>] [6 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-Start
-.PNG> <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-var1-1000
-0.PNG>] [7 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-var1
--10000-2.PNG> <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/MatLab-300
--100-100-3-Start.PNG>]
-Underfull \hbox (badness 1210) in paragraph at lines 218--222
+
+Underfull \hbox (badness 1210) in paragraph at lines 220--224
 []\T1/futs/m/n/10.95 "'LGCA"', Lattice-Gas Cel-lu-lar Au-tomata and Lat-tice Bo
 ltz-
  []
@@ -952,16 +968,16 @@ ltz-
 End.PNG>] (C:\Users\Mike\git\ModSimProject-WS13\docu\project_description.aux) )
  
 Here is how much of TeX's memory you used:
- 5193 strings out of 493921
- 73031 string characters out of 3144880
+ 5233 strings out of 493921
+ 73806 string characters out of 3144880
  255430 words of memory out of 3000000
- 8362 multiletter control sequences out of 15000+200000
- 68544 words of font info for 69 fonts, out of 3000000 for 9000
+ 8397 multiletter control sequences out of 15000+200000
+ 87148 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 39i,10n,47p,486b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,47p,486b,272s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb>
-Output written on project_description.pdf (8 pages, 175516 bytes).
+Output written on project_description.pdf (8 pages, 175739 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
