@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.4)  24 FEB 2014 10:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.2.4)  24 FEB 2014 13:15
 entering extended mode
 **project_description.tex
 (C:\Users\Mike\git\ModSimProject-WS13\docu\project_description.tex
@@ -838,9 +838,9 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (1.10597pt too wide) in paragraph at lines 79--80
-\T1/futs/m/n/10.95 A cel-lu-lar au-toma-ton is a col-lec-tion of "coloured" cel
-ls on a grid of spec-i-fied shape that evolves
+Overfull \hbox (17.21393pt too wide) in paragraph at lines 79--80
+\T1/futs/m/n/10.95 Cellular au-tomata con-sists of a a grid with a spe-cific sh
+ape that con-tains a col-lec-tion of "coloured"
  []
 
 LaTeX Font Info:    Try loading font information for TS1+futs on input line 85.
@@ -853,13 +853,7 @@ File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Overfull \hbox (40.16887pt too wide) in paragraph at lines 138--139
-\T1/futs/m/n/10.95 con-tin-u-ing un-changed, or non-colliding par-ti-cles sim-p
-le re-main-ing the same. [[]] 
- []
-
-
-Overfull \hbox (35.28506pt too wide) in paragraph at lines 141--142
+Overfull \hbox (35.28506pt too wide) in paragraph at lines 136--137
 \T1/futs/m/n/10.95 rently trav-el-ling, which could have been changed by the ab
 ove Col-li-sion Step. [[]] 
  []
@@ -869,7 +863,7 @@ File: Screenshots/ImplementationRules-1.PNG Graphic file (type png)
 
 <use Screenshots/ImplementationRules-1.PNG>
 Package pdftex.def Info: Screenshots/ImplementationRules-1.PNG used on input li
-ne 148.
+ne 143.
 (pdftex.def)             Requested size: 250.95587pt x 365.70557pt.
 
 <Screenshots/ImplementationRules-2.PNG, id=14, 276.28218pt x 218.31563pt>
@@ -877,7 +871,7 @@ File: Screenshots/ImplementationRules-2.PNG Graphic file (type png)
 
 <use Screenshots/ImplementationRules-2.PNG>
 Package pdftex.def Info: Screenshots/ImplementationRules-2.PNG used on input li
-ne 160.
+ne 155.
 (pdftex.def)             Requested size: 250.95587pt x 198.30109pt.
  [4 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/ImplementationRules-
 1.PNG>]
@@ -885,7 +879,7 @@ ne 160.
 File: Screenshots/Anylogic-Start.PNG Graphic file (type png)
 
 <use Screenshots/Anylogic-Start.PNG>
-Package pdftex.def Info: Screenshots/Anylogic-Start.PNG used on input line 175.
+Package pdftex.def Info: Screenshots/Anylogic-Start.PNG used on input line 170.
 
 (pdftex.def)             Requested size: 250.95587pt x 213.52078pt.
 
@@ -894,7 +888,7 @@ File: Screenshots/Anylogic-var1-10000.PNG Graphic file (type png)
 
 <use Screenshots/Anylogic-var1-10000.PNG>
 Package pdftex.def Info: Screenshots/Anylogic-var1-10000.PNG used on input line
- 182.
+ 177.
 (pdftex.def)             Requested size: 250.95587pt x 214.09978pt.
 
 <Screenshots/Anylogic-var1-10000-2.PNG, id=21, 613.54219pt x 523.20468pt>
@@ -902,7 +896,7 @@ File: Screenshots/Anylogic-var1-10000-2.PNG Graphic file (type png)
 
 <use Screenshots/Anylogic-var1-10000-2.PNG>
 Package pdftex.def Info: Screenshots/Anylogic-var1-10000-2.PNG used on input li
-ne 189.
+ne 184.
 (pdftex.def)             Requested size: 250.95587pt x 214.00436pt.
 
 <Screenshots/MatLab-300-100-100-3-Start.PNG, id=22, 434.37282pt x 385.44pt>
@@ -910,7 +904,7 @@ File: Screenshots/MatLab-300-100-100-3-Start.PNG Graphic file (type png)
 
 <use Screenshots/MatLab-300-100-100-3-Start.PNG>
 Package pdftex.def Info: Screenshots/MatLab-300-100-100-3-Start.PNG used on inp
-ut line 198.
+ut line 193.
 (pdftex.def)             Requested size: 250.95587pt x 222.6908pt.
 
 <Screenshots/MatLab-300-100-100-3-End.PNG, id=23, 433.62pt x 386.94562pt>
@@ -918,7 +912,7 @@ File: Screenshots/MatLab-300-100-100-3-End.PNG Graphic file (type png)
 
 <use Screenshots/MatLab-300-100-100-3-End.PNG>
 Package pdftex.def Info: Screenshots/MatLab-300-100-100-3-End.PNG used on input
- line 205.
+ line 200.
 (pdftex.def)             Requested size: 250.95587pt x 223.94446pt.
  [5 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/ImplementationRules-
 2.PNG>] [6 <C:/Users/Mike/git/ModSimProject-WS13/docu/Screenshots/Anylogic-Star
@@ -942,24 +936,24 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 )
 \tf@lof=\write3
 
-Overfull \hbox (48.6735pt too wide) in paragraph at lines 217--218
+Overfull \hbox (48.6735pt too wide) in paragraph at lines 212--213
 []\T1/futs/m/n/10.95 "'Mathworld"', http://mathworld.wolfram.com/CellularAutoma
 ton.html,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 []\T1/futs/m/n/10.95 "'Wikipedia"', http://en.wikipedia.org/wiki/HPP_model,
  []
 
 
-Overfull \hbox (24.98857pt too wide) in paragraph at lines 219--220
+Overfull \hbox (24.98857pt too wide) in paragraph at lines 214--215
 []\T1/futs/m/n/10.95 "'Wikipedia"', http://en.wikipedia.org/wiki/Lattice_gas_au
 tomaton,
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 220--224
+Underfull \hbox (badness 1210) in paragraph at lines 215--219
 []\T1/futs/m/n/10.95 "'LGCA"', Lattice-Gas Cel-lu-lar Au-tomata and Lat-tice Bo
 ltz-
  []
@@ -974,10 +968,10 @@ Here is how much of TeX's memory you used:
  8397 multiletter control sequences out of 15000+200000
  87148 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 39i,10n,47p,486b,272s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,47p,535b,272s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb>
-Output written on project_description.pdf (8 pages, 175739 bytes).
+Output written on project_description.pdf (8 pages, 175727 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
