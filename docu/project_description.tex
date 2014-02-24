@@ -40,6 +40,7 @@
 \renewcommand{\headrulewidth}{0pt} % Remove header underlines
 \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
 \setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{float}
 
 \numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 \numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
@@ -143,7 +144,7 @@ The second step consists of each particle moving one lattice step in the directi
 \pagebreak
 \subsection{collision and propagation}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-1.PNG}
 	\caption[HPP collisions and propagation]{HPP: collision and propagation. Filled circles denote occupied cells and
@@ -155,7 +156,7 @@ c) After propagation: all particles have moved along the links to their nearest 
 	\label{fig:collision_propagation}
 \end{figure}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-2.PNG}
 	\caption[HPP collisions]{HPP: collisions. 
@@ -170,21 +171,21 @@ The simulation was created in two ways. There is one solution with Anylogic and 
 
 \subsection{Anylogic}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-Start.PNG}
 	\caption[Anylogic Startpage]{Startpage of the Anylogic example. You can choose between different amounts of agents and setups for the HPP Lattice-Gas Simulation.}
 	\label{fig:anylogic-start}
 \end{figure}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-var1-10000.PNG}
 	\caption[Anylogic Example 1 - Start]{Begin of Anylogic Simulation with 10000 Agents and Setup var1. You can edit the values by entering 0 or 1 in the edit field and press set values to see the changes. The status field show if the values are added correctly.}
 	\label{fig:anylogic-example1-start}
 \end{figure}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-var1-10000-2.PNG}
 	\caption[Anylogic Example 1 - End]{Anylogic Simulation with 10000 Agents and Setup var1 after 236 steps. Compared with the start image you can see how the gas has distributed.}
@@ -193,14 +194,14 @@ The simulation was created in two ways. There is one solution with Anylogic and 
 
 \subsection{MatLab}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/MatLab-300-100-100-3-Start.PNG}
 	\caption[MatLab Example 1 - Start]{MatLab Simulation with duration of 300 height and width 100 and scenario 3. These 3 values can be changed when the MatLab Simulation is started.}
 	\label{fig:matlab-example1-start}
 \end{figure}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/MatLab-300-100-100-3-End.PNG}
 	\caption[MatLab Example 1 - End]{MatLab Simulation with duration of 300 height and width 100 and scenario 3. This image shows the state of the HPP LG CA after the duration of 300.}
@@ -208,7 +209,13 @@ The simulation was created in two ways. There is one solution with Anylogic and 
 \end{figure}
 
 \subsection{Conclusion}
-The HPP lattice-gas cellular automata is a very interesting topic which we could study by building an Anylogic and MatLab program to simulate the gas flow according to the mentioned model.
+The HPP-Lattice Gas Cellular Automaton is an established method to learn about the flows of fluids and gases. 
+Using different initial states one can easily study the different behaviours based on simple collision and propagation rules.
+The HPP simulation was quite easy to implement, but doesn't fully represent the original characteristics of such fluids or gases. 
+For example, it lacks rotational invariance, making the model highly anisotropic. 
+This results in strange square-shapes, which are unnatural for fluids and gases.
+More precise models are created using hexagonal grids and are called FHP cellular automata, but these are subject to further studies.
+
 
 \pagebreak
 \listoffigures
