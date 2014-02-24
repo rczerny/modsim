@@ -76,7 +76,7 @@ The goal of this assignment is to program the HPP LG CA in MatLab and Anylogic. 
 \section{What are Cellular Automata (CA) in general}
 
 %Quelle: http://mathworld.wolfram.com/CellularAutomaton.html
-A cellular automaton is a collection of "coloured" cells on a grid of specified shape that evolves through a number of discrete time steps according to a set of rules based on the states of neighbouring cells. The rules are then applied iteratively for as many time steps as desired.
+A cellular automaton is a collection of "coloured" cells on a grid of specified shape that evolves through a number of discrete time steps according to a set of rules based on the states of neighbouring cells. The rules are then applied iteratively for as many time steps as desired. \cite{mathworld}
 
 %Quelle: 2_3_CA.pdf - chapter 2
 CA  can have the following 5 characteristics. Not all of these must be always fulfilled. 
@@ -87,11 +87,12 @@ CA  can have the following 5 characteristics. Not all of these must be always fu
 	\item The states are updated simultaneously (`synchronously') at discrete time levels.
 	\item The update rules are deterministic and uniform in space and time.
 	\item The rules for the evolution of a cell depend only on a local neighbourhood of cells around it. 
+	\cite{LGCA}
 \end{itemize}
 
 %Quelle: http://mathworld.wolfram.com/CellularAutomaton.html
 Cellular automata come in a variety of shapes and varieties. One of the most fundamental properties of a cellular automaton is the type of grid on which it is computed. The simplest such "grid" is a one-dimensional line. In two dimensions, square, triangular, and hexagonal grids may be considered. Cellular automata may also be constructed on Cartesian grids in arbitrary numbers of dimensions. 
-As our problem needs to be handled with a two-dimensional automata, we will only describe this one here more detailed. 
+As our problem needs to be handled with a two-dimensional automata, we will only describe this one here more detailed.  \cite{mathworld}
 
 %Quelle: 2_3_CA.pdf - chapter 2
 There is much more freedom for arranging the cells and defining the neighbourhoods for the updating rules in two dimensions. There are two types of neighbourhoods in two dimensions. There is the von Neumann neighbourhood and the Moore neighbourhood.
@@ -102,7 +103,7 @@ behaviour which is a prerequisite to use them as a simulation tool for physical
 (biological, chemical, ...) phenomena like, for example, fluid flow. CA are
 very easy to implement and are especially well suited for massively parallel
 computers because of the local character of the update rules. By construction
-they are unconditionally numerically stable. 
+they are unconditionally numerically stable. \cite{LGCA}
 
 
 \section{HPP LG CA}
@@ -113,7 +114,7 @@ As a cellular automaton, these models comprise a lattice, where the sites on the
 The state at each site is purely boolean. At a given site, there either is or is not a particle moving in each direction.
 
 In papers published in 1973 and 1976, Hardy, Pomeau and de Pazzis introduced the first Lattice Boltzmann model, which is called the HPP model after the authors. HPP model is a two-dimensional model of fluid particle interactions. In this model, the lattice is square, and the particles travel independently at a unit speed to the discrete time. The particles can move to any of the four sites whose cells share a common edge. Particles cannot move diagonally.
-If two particles collide head-on, for example a particle moving to the left meets a particle moving to the right, the outcome will be two particles leaving the site at right angles to the direction they came in.
+If two particles collide head-on, for example a particle moving to the left meets a particle moving to the right, the outcome will be two particles leaving the site at right angles to the direction they came in. \cite{wiki-lg}
 
 
 \section{implementation rules}
@@ -131,13 +132,13 @@ The following rules also govern the model:
 	\item Two particles experience a collision which isn't head-on simply pass through each other and continue in the same direction.
 	\item Optionally, when a particles collides with the edges of a lattice it can rebound.
 \end{enumerate}
-The HPP models follows a two stage update process.
+The HPP models follows a two stage update process. \cite{wiki-hpp}
 
 \subsection{Collision Step}
-In this step the above rules, 2., 3. and 4. are checked and applied if any collisions have occurred. This results in head-on collision particles changing direction, pass-through collisions continuing unchanged, or non-colliding particles simple remaining the same.
+In this step the above rules, 2., 3. and 4. are checked and applied if any collisions have occurred. This results in head-on collision particles changing direction, pass-through collisions continuing unchanged, or non-colliding particles simple remaining the same. \cite{wiki-hpp}
 
 \subsection{Transport Step}
-The second step consists of each particle moving one lattice step in the direction they are currently travelling, which could have been changed by the above Collision Step.
+The second step consists of each particle moving one lattice step in the direction they are currently travelling, which could have been changed by the above Collision Step. \cite{wiki-hpp}
 
 \pagebreak
 \subsection{collision and propagation}
@@ -145,47 +146,48 @@ The second step consists of each particle moving one lattice step in the directi
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-1.PNG}
-	\caption{HPP: collision and propagation. Filled circles denote occupied cells and
+	\caption[HPP collisions and propagation]{HPP: collision and propagation. Filled circles denote occupied cells and
 open circles empty cells. 
 a) Part of the lattice before collision (e.g. after propagation);
 there is only one collision configuration (two particles in opposite cells at the same node; on the left). 
 b) After collision (e.g. before propagation): the configuration of the cells at node on the left side has changed. 
-c) After propagation: all particles have moved along the links to their nearest neighbours (the lattice outside the part shown was assumed to be empty, e.g. no propagation of particles from `outside').}
+c) After propagation: all particles have moved along the links to their nearest neighbours (the lattice outside the part shown was assumed to be empty, e.g. no propagation of particles from `outside'). \cite{LGCA}} 
 	\label{fig:collision_propagation}
 \end{figure}
 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/ImplementationRules-2.PNG}
-	\caption{HPP: collisions. 
+	\caption[HPP collisions]{HPP: collisions. 
 a) There is only one collision configuration (head-on collision) for HPP: two cell on opposite links are occupied and the two other cells are empty. After collision the formerly empty cells are occupied and vice versa. 
-b)Same as a) but showing the associated momentum vectors. Both momentum vectors are rotated by 90°. Mass and momentum are conserved.}
+b)Same as a) but showing the associated momentum vectors. Both momentum vectors are rotated by 90°. Mass and momentum are conserved. \cite{LGCA} }
 	\label{fig:collisions}
 \end{figure}
 
 \pagebreak
 \section{screenshots, results and comments}
+The simulation was created in two ways. There is one solution with Anylogic and a second with MatLab. On the following pages you can see some screenshots with comments of the simulations with these two programs.
 
 \subsection{Anylogic}
 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-Start.PNG}
-	\caption{Startpage of the Anylogic example. You can choose between different amounts of agents and setups for the HPP Lattice-Gas Simulation.}
+	\caption[Anylogic Startpage]{Startpage of the Anylogic example. You can choose between different amounts of agents and setups for the HPP Lattice-Gas Simulation.}
 	\label{fig:anylogic-start}
 \end{figure}
 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-var1-10000.PNG}
-	\caption{Begin of Anylogic Simulation with 10000 Agents and Setup var1. You can edit the values by entering 0 or 1 in the edit field and press set values to see the changes. The status field show if the values are added correctly.}
+	\caption[Anylogic Example 1 - Start]{Begin of Anylogic Simulation with 10000 Agents and Setup var1. You can edit the values by entering 0 or 1 in the edit field and press set values to see the changes. The status field show if the values are added correctly.}
 	\label{fig:anylogic-example1-start}
 \end{figure}
 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/Anylogic-var1-10000-2.PNG}
-	\caption{Anylogic Simulation with 10000 Agents and Setup var1 after 236 steps. Compared with the start image you can see how the gas has distributed.}
+	\caption[Anylogic Example 1 - End]{Anylogic Simulation with 10000 Agents and Setup var1 after 236 steps. Compared with the start image you can see how the gas has distributed.}
 	\label{fig:anylogic-example1-end}
 \end{figure}
 
@@ -194,16 +196,30 @@ b)Same as a) but showing the associated momentum vectors. Both momentum vectors 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/MatLab-300-100-100-3-Start.PNG}
-	\caption{MatLab Simulation with duration of 300 height and width 100 and scenario 3. These 3 values can be changed when the MatLab Simulation is started.}
+	\caption[MatLab Example 1 - Start]{MatLab Simulation with duration of 300 height and width 100 and scenario 3. These 3 values can be changed when the MatLab Simulation is started.}
 	\label{fig:matlab-example1-start}
 \end{figure}
 
 \begin{figure}[!htp]
 	\centering
 		\includegraphics[width=0.60\textwidth]{Screenshots/MatLab-300-100-100-3-End.PNG}
-	\caption{MatLab Simulation with duration of 300 height and width 100 and scenario 3. This image shows the state of the HPP LG CA after the duration of 300.}
+	\caption[MatLab Example 1 - End]{MatLab Simulation with duration of 300 height and width 100 and scenario 3. This image shows the state of the HPP LG CA after the duration of 300.}
 	\label{fig:matlab-example1-end}
 \end{figure}
+
+\subsection{Conclusion}
+The HPP lattice-gas cellular automata is a very interesting topic which we could study by building an Anylogic and MatLab program to simulate the gas flow according to the mentioned model.
+
+
+\begin{thebibliography}{xxxxxxxxxxxxxxxxxxxxxxxxx}
+   \bibitem[Mathworld]{mathworld}"'Mathworld"', http://mathworld.wolfram.com/CellularAutomaton.html, 05.02.2014
+   \bibitem[Wikipedia HPP-Model]{wiki-hpp}"'Wikipedia"', http://en.wikipedia.org/wiki/HPP\_model, 05.02.2014
+   \bibitem[Wikipedia - LG automata]{wiki-lg}"'Wikipedia"', http://en.wikipedia.org/wiki/Lattice\_gas\_automaton, 05.02.2014
+   \bibitem[LG CA - Introduction]{LGCA}"'LGCA"', Lattice-Gas Cellular
+Automata and
+Lattice Boltzmann Models
+- An Introduction, 26.06.2005
+\end{thebibliography}
 
 
 \end{document}
